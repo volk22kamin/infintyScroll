@@ -33,25 +33,22 @@ function displayPhotos(){
     imagesLoaded = 0;
     totalImages = photoArray.length;
     photoArray.forEach((photo) => {
-        // creating href element
         const item = document.createElement('a');
         setAttributes(item, {
             href: photo.links.html,
             target: '_blank',
         });
-        //creatimg img element
         const img = document.createElement('img');
         setAttributes(img, {
             src:photo.urls.regular,
             alt: photo.description,
         });
-        // if the description is null
         if(!photo.description){
             img.setAttribute('title', 'unsplash photo');
         } else {
             img.setAttribute('title', photo.description);
         }
-        // event listener check when eah is finished loading 
+        // event listener check when the image is finished loading 
         img.addEventListener('load', imageLoaded);
 
         item.appendChild(img);
